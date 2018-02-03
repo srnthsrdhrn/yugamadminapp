@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#9E9E9E</color>
+    <color name="colorPrimaryDark">#616161</color>
+    <color name="colorAccent">#F5F5F5</color>
+
+
+    <color name="primary">#9E9E9E</color>
+    <color name="primary_dark">#616161</color>
+    <color name="primary_light">#F5F5F5</color>
+    <color name="accent">#607D8B</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#212121</color>
+    <color name="divider">#BDBDBD</color>
+
+        <color name="cardViewbackground">@color/primary_light</color>
+        <color name="red">#ea5544</color>
+        <color name="yellow">#f5e030</color>
+        <color name="blue">#295379</color>
+        <color name="light_blue">#3bb3ac</color>
+        <color name="bright_green">#0bfa17</color>
+        <color name="orange">#fa6c06</color>
+        <color name="pink">#f91bf9</color>
+        <color name="bright_red">#fc0516</color>
+        <color name="login_screen_status_bar_color">#0d1552</color>
+
+        <color name="yugam_red">#e23a1e</color>
+        <color name="yugam_yellow">#FBBC05</color>
+        <color name="yugam_dark_blue">#003d69</color>
+        <color name="yugam_light_blue">#16a0b5</color>
+
+        <color name="subCategoryBackground">#00BC9E</color>
+        <color name="workshopDescBackground">#FEDFFC</color>
+
+</resources>
