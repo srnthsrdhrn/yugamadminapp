@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import io.iqube.yugam.yugamadminapp.models.User;
+import io.realm.Realm;
 
 /**
  * Created by raja sudhan on 11/12/2016.
@@ -33,7 +34,6 @@ public class YugamAdminApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
 
         networkCheck = new NetworkCheck();
 
@@ -104,15 +104,6 @@ public class YugamAdminApplication extends Application {
             return false;
         }
     }
-
-    public static void saveUser(String email, String password, Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(prefEmail, email);
-        editor.putString(prefPassword, password);
-        editor.apply();
-    }
-
     public static boolean checkLogin(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE);
         String email = preferences.getString(prefEmail, "");

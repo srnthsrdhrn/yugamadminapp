@@ -16,9 +16,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.HashMap;
+import java.util.Objects;
 
+import io.iqube.yugam.yugamadminapp.models.ManagedEvent;
+import io.iqube.yugam.yugamadminapp.models.ManagedWorkshop;
 import io.iqube.yugam.yugamadminapp.models.User;
 import io.realm.Realm;
+import io.realm.RealmConfiguration;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,21 +33,18 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailet, passwordet;
     boolean Connected = false;
     boolean flag = false;
-
-
+    Realm realm;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Realm.init(LoginActivity.this);
+        realm = Realm.getInstance(new RealmConfiguration.Builder().deleteRealmIfMigrationNeeded().build());
         emailet = findViewById(R.id.email);
         passwordet = findViewById(R.id.password);
         Login = findViewById(R.id.login);
         Login.setText("Login");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setSharedElementEnterTransition(new ChangeBounds());
-            getWindow().setSharedElementExitTransition(new ChangeBounds());
-        }
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
@@ -54,7 +55,10 @@ public class LoginActivity extends AppCompatActivity {
                 Connected = true;
         } else
             Connected = false;
-
+        User user  = realm.where(User.class).findFirst();
+        if(user!=null){
+            startActivity(new Intent(LoginActivity.this, SelectionActivity.class));
+        }
         Login.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View view) {
@@ -100,10 +104,18 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if (response.isSuccessful()) {
-                            ((YugamAdminApplication) getApplication()).saveUser(email, password, LoginActivity.this);
-
-                            startActivity(new Intent(LoginActivity.this, AttendanceActivity.class).putExtra("isLoggedIn", true));
-                            finish();
+                            if(!Objects.equals(response.body().getAuthority(), "user")) {
+                                realm.beginTransaction();
+                                realm.delete(User.class);
+                                realm.delete(ManagedEvent.class);
+                                realm.delete(ManagedWorkshop.class);
+                                realm.copyToRealmOrUpdate(response.body());
+                                realm.commitTransaction();
+                                startActivity(new Intent(LoginActivity.this, SelectionActivity.class).putExtra("isLoggedIn", true));
+                                Login.setText("Login");
+                            }else{
+                                Toast.makeText(LoginActivity.this, "Your Not an Admin. You have been denied access", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Login.setText("Login");
                             Toast.makeText(LoginActivity.this, "Username/Password is wrong", Toast.LENGTH_SHORT).show();
