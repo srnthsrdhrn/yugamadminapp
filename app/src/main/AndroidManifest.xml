@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="io.iqube.yugam.yugamadminapp">
+    package="io.iqube.yugam.yugamadminapp1">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -12,15 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        <activity android:name="io.iqube.yugam.yugamadminapp1.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AttendanceActivity" />
-        <activity android:name=".SelectionActivity"/>
+        <activity android:name="io.iqube.yugam.yugamadminapp1.AttendanceActivity" />
+        <activity android:name="io.iqube.yugam.yugamadminapp1.SelectionActivity"/>
     </application>
 
 </manifest>

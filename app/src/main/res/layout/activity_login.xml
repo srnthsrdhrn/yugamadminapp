@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.iqube.yugam.yugamadminapp.LoginActivity">
+    tools:context="io.iqube.yugam.yugamadminapp1.LoginActivity">
 <RelativeLayout
-    android:background="@drawable/bg_scan"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.CardView

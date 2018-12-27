@@ -6,20 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="@drawable/bg_scan"
-    tools:context="io.iqube.yugam.yugamadminapp.AttendanceActivity">
+    tools:context="io.iqube.yugam.yugamadminapp1.AttendanceActivity">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textColor="@android:color/white"
         android:text="Response"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+
         android:id="@+id/result"
         android:textSize="20sp"
         />
@@ -31,7 +29,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@android:color/white"
+
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -39,8 +37,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
+
             android:textStyle="bold"
             android:id="@+id/yugam_id"
             android:layout_width="match_parent"
